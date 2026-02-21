@@ -23,3 +23,9 @@ class SystemLogAdmin(admin.ModelAdmin):
     list_filter = ['level', 'action', 'timestamp']
     search_fields = ['action', 'description', 'user']
     readonly_fields = ['timestamp']
+
+
+from django.contrib import admin
+from .models import UserProfile
+
+admin.site.register(UserProfile)

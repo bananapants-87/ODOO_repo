@@ -13,3 +13,9 @@ router.register(r'health', HealthViewSet, basename='health')
 urlpatterns = [
     path('', include(router.urls)),
 ]
+
+from fleetflow.apps.common.views import register_user
+
+urlpatterns += [
+    path("api/register/", register_user),
+]

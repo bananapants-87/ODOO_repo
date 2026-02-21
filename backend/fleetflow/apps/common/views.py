@@ -71,3 +71,27 @@ class HealthViewSet(viewsets.ViewSet):
             'name': 'FleetFlow',
             'description': 'Fleet & Logistics Management System'
         })
+
+from django.contrib.auth.models import User
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from .models import UserProfile
+
+@api_view(["POST"])
+def register_user(request):
+
+    email = request.data.get("email")
+    password = request.data.get("password")
+    role = request.data.get("role")
+
+    user = User.objects.create_user(
+        username=email,
+        password=password
+    )
+
+    UserProfile.objects.create(
+        user=user,
+        role=role
+    )
+
+    return Response({"message": "User created"})
