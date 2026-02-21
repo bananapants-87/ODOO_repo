@@ -1,1 +1,2 @@
 print("Aryan")
+print("hi")
